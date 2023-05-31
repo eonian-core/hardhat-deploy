@@ -1,11 +1,24 @@
-<h1> hardhat-deploy</h1>
+<h1> Eonian hardhat-deploy</h1>
+
+> This is a fork of hardhat-deploy package with small security fixes. We mainly recomment to use [original package](https://github.com/wighawag/hardhat-deploy). This package is maintained and used by Eonian team. It will be deprecated if/when changes made in this repository will be merged to original package. 
+
+For now you can use this package as it is. We currently support only Eonian main use case: UUPS proxies deployement based on `ERC1967Proxy` directly from OpenZeppelin. For any another use cases better to use original package.
+
+## Changes
+
+Oridiginal [hardhat-deploy](https://github.com/wighawag/hardhat-deploy) package support `UUPS` proxy use case, but it use precompiled `ERC1967Proxy` contract instead of OpenZeppelin implementation. This is not enough secure for us, so we decided to use OpenZeppelin implementation directly.
+
+This [PR](https://github.com/wighawag/hardhat-deploy/pull/451) adds ability to use `ERC1967Proxy` directly from OpenZeppelin for UUPS.
+
+---
 
 _A [Hardhat](https://hardhat.org) Plugin For Replicable Deployments And Easy Testing_
 
 > **A complete dev template using hardhat-deploy is available here**: https://github.com/wighawag/template-ethereum-contracts
 > It also contains various branches examplifying the capability of hardhat-deploy. Check it out.
 
-- [What is it for?](#what-is-it-for-)
+- [Changes](#changes)
+- [What is it for?](#what-is-it-for)
 - [hardhat-deploy in a nutshell](#hardhat-deploy-in-a-nutshell)
 - [Installation](#installation)
   - [npm install hardhat-deploy](#npm-install-hardhat-deploy)
@@ -132,13 +145,13 @@ There is a tutorial covering the basics here: https://github.com/wighawag/tutori
 ### npm install hardhat-deploy
 
 ```bash
-npm install -D hardhat-deploy
+npm install -D @eonian/hardhat-deploy
 ```
 
 And add the following statement to your `hardhat.config.js`:
 
 ```js
-require('hardhat-deploy');
+require('@eonian/hardhat-deploy');
 ```
 
 if you use `ethers.js` we recommend you also install `hardhat-deploy-ethers` which add extra features to access deployments as ethers contract.
@@ -165,7 +178,7 @@ for deploy script (see below) you can write them this way to benefit from typing
 
 ```ts
 import {HardhatRuntimeEnvironment} from 'hardhat/types';
-import {DeployFunction} from 'hardhat-deploy/types';
+import {DeployFunction} from '@eonian/hardhat-deploy/types';
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   // code here

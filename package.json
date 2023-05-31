@@ -1,9 +1,9 @@
 {
-  "name": "hardhat-deploy",
+  "name": "@eonian/hardhat-deploy",
   "version": "0.11.30",
   "description": "Hardhat Plugin For Replicable Deployments And Tests",
-  "repository": "github:wighawag/hardhat-deploy",
-  "author": "wighawag",
+  "repository": "github:eonian-core/hardhat-deploy",
+  "author": "leovs09",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
